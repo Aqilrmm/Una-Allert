@@ -1,0 +1,302 @@
+/**
+ * Una-Alert: Modern Alert & Confirmation System
+ * Default styling
+ * 
+ * @version 1.0.0
+ * @author Aqil Ramadhan
+ * @license MIT
+ */
+
+/* Una-Alert styling */
+.una-alert-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    padding: 20px;
+}
+
+.una-alert-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.una-alert {
+    background-color: white;
+    border-radius: 16px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    max-width: 420px;
+    padding: 0;
+    overflow: hidden;
+    transform: translateY(30px) scale(0.95);
+    opacity: 0;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+}
+
+.una-alert-overlay.show .una-alert {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+.una-alert-header {
+    padding: 20px 24px 0;
+    text-align: center;
+    position: relative;
+}
+
+.una-alert-icon {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.una-alert-icon svg {
+    width: 40px;
+    height: 40px;
+}
+
+.una-alert-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.una-alert-message {
+    padding: 0 24px 24px;
+    text-align: center;
+    color: #4b5563;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.una-alert-actions {
+    display: flex;
+    padding: 16px 24px;
+    border-top: 1px solid #e5e7eb;
+    gap: 12px;
+}
+
+.una-alert-actions.vertical {
+    flex-direction: column;
+}
+
+.una-alert-btn {
+    flex: 1;
+    padding: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.una-alert-btn-cancel {
+    background-color: #f3f4f6;
+    color: #374151;
+}
+
+.una-alert-btn-cancel:hover {
+    background-color: #e5e7eb;
+}
+
+.una-alert-btn-confirm {
+    background-color: #6366f1;
+    color: white;
+}
+
+.una-alert-btn-confirm:hover {
+    background-color: #4f46e5;
+}
+
+.una-alert-btn-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6b7280;
+    transition: background-color 0.2s ease;
+    padding: 0;
+    box-shadow: none;
+}
+
+.una-alert-btn-close:hover {
+    background-color: #f3f4f6;
+    color: #1f2937;
+}
+
+.una-alert-btn-close svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Una-Alert types */
+.una-alert-success .una-alert-icon {
+    background-color: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+}
+
+.una-alert-info .una-alert-icon {
+    background-color: rgba(59, 130, 246, 0.1);
+    color: #3b82f6;
+}
+
+.una-alert-warning .una-alert-icon {
+    background-color: rgba(245, 158, 11, 0.1);
+    color: #f59e0b;
+}
+
+.una-alert-error .una-alert-icon {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+}
+
+.una-alert-question .una-alert-icon {
+    background-color: rgba(99, 102, 241, 0.1);
+    color: #6366f1;
+}
+
+/* Toast notifications */
+.una-toast-container {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9998;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    max-width: 400px;
+    padding: 0 16px;
+}
+
+.una-toast {
+    background-color: white;
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    transform: translateY(20px);
+    opacity: 0;
+    animation: toast-in 0.3s ease forwards;
+}
+
+.una-toast.hide {
+    animation: toast-out 0.3s ease forwards;
+}
+
+@keyframes toast-in {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes toast-out {
+    to {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+}
+
+.una-toast-icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+.una-toast-content {
+    flex-grow: 1;
+}
+
+.una-toast-title {
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 2px;
+}
+
+.una-toast-message {
+    font-size: 13px;
+    color: #6b7280;
+}
+
+.una-toast-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    color: #9ca3af;
+    transition: color 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+.una-toast-close:hover {
+    color: #4b5563;
+}
+
+/* Success toast */
+.una-toast-success {
+    border-left: 3px solid #10b981;
+}
+
+.una-toast-success .una-toast-icon {
+    color: #10b981;
+}
+
+/* Info toast */
+.una-toast-info {
+    border-left: 3px solid #3b82f6;
+}
+
+.una-toast-info .una-toast-icon {
+    color: #3b82f6;
+}
+
+/* Warning toast */
+.una-toast-warning {
+    border-left: 3px solid #f59e0b;
+}
+
+.una-toast-warning .una-toast-icon {
+    color: #f59e0b;
+}
+
+/* Error toast */
+.una-toast-error {
+    border-left: 3px solid #ef4444;
+}
+
+.una-toast-error .una-toast-icon {
+    color: #ef4444;
+}
