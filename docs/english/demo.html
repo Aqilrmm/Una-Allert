@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Una Allert Demo - Modern Alert & Toast System</title>
+    <link rel="stylesheet" href="../../src/una-allert.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+          "Helvetica Neue", sans-serif;
+      }
+
+      body {
+        background-color: #f9fafb;
+        color: #1f2937;
+        line-height: 1.5;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 40px 20px;
+      }
+
+      header {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 16px;
+        color: #4f46e5;
+      }
+
+      .subtitle {
+        font-size: 1.25rem;
+        color: #6b7280;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .section {
+        background-color: white;
+        border-radius: 12px;
+        padding: 32px;
+        margin-bottom: 32px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      }
+
+      h2 {
+        font-size: 1.5rem;
+        margin-bottom: 16px;
+        color: #111827;
+        padding-bottom: 12px;
+        border-bottom: 1px solid #e5e7eb;
+      }
+
+      p {
+        margin-bottom: 16px;
+        color: #4b5563;
+      }
+
+      .code-block {
+        background-color: #f3f4f6;
+        border-radius: 8px;
+        padding: 16px;
+        margin-bottom: 24px;
+        overflow-x: auto;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        font-size: 0.9rem;
+        color: #1f2937;
+      }
+
+      .demo-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 16px;
+        margin-top: 24px;
+      }
+
+      .button {
+        background-color: #6366f1;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 12px 20px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+      }
+
+      .button:hover {
+        background-color: #4f46e5;
+      }
+
+      .button-secondary {
+        background-color: #f3f4f6;
+        color: #374151;
+      }
+
+      .button-secondary:hover {
+        background-color: #e5e7eb;
+      }
+
+      .button-success {
+        background-color: #10b981;
+      }
+
+      .button-success:hover {
+        background-color: #059669;
+      }
+
+      .button-warning {
+        background-color: #f59e0b;
+      }
+
+      .button-warning:hover {
+        background-color: #d97706;
+      }
+
+      .button-error {
+        background-color: #ef4444;
+      }
+
+      .button-error:hover {
+        background-color: #dc2626;
+      }
+
+      footer {
+        text-align: center;
+        padding: 32px 0;
+        color: #6b7280;
+        font-size: 0.875rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Una Allert Demo</h1>
+        <p class="subtitle"> A lightweight, customizable alert and toast notification library </p>
+      </header>
+
+      <section class="section">
+        <h2>Introduction</h2>
+        <p>
+          Una Allert is a modern, lightweight JavaScript library that provides beautiful alert dialogs and toast
+          notifications for your web applications. It's highly customizable, easy to use, and has zero dependencies.
+        </p>
+        <p>
+          This demo page shows all the features of Una Allert and includes code examples to help you get started
+          quickly.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>Installation</h2>
+        <p> To use Una Allert, include the CSS and JavaScript files in your HTML: </p>
+        <pre class="code-block">
+&lt;link rel="stylesheet" href="Una Allert.css"&gt;
+&lt;script src="Una Allert.js"&gt;&lt;/script&gt;</pre
+        >
+        <p>Then initialize the library after the DOM is loaded:</p>
+        <pre class="code-block">
+&lt;script&gt;
+  document.addEventListener('DOMContentLoaded', function() {
+    unaAlert.init();
+  });
+&lt;/script&gt;</pre
+        >
+      </section>
+
+      <section class="section">
+        <h2>Basic Alerts</h2>
+        <p> Una Allert provides different types of alerts: success, info, warning, error, and question. </p>
+
+        <div class="demo-grid">
+          <button
+            class="button button-success"
+            onclick="unaAlert.show('success', 'Success!', 'Your action was completed successfully.')">
+            Success Alert
+          </button>
+          <button
+            class="button"
+            onclick="unaAlert.show('info', 'Information', 'Here is some important information for you.')">
+            Info Alert
+          </button>
+          <button
+            class="button button-warning"
+            onclick="unaAlert.show('warning', 'Warning', 'Please be careful with this action.')">
+            Warning Alert
+          </button>
+          <button
+            class="button button-error"
+            onclick="unaAlert.show('error', 'Error', 'Something went wrong. Please try again.')">
+            Error Alert
+          </button>
+        </div>
+
+        <h3 style="margin-top: 24px; font-size: 1.25rem">Code Example:</h3>
+        <pre class="code-block">
+// Show a success alert
+unaAlert.show('success', 'Success!', 'Your action was completed successfully.');
+
+// Show an info alert
+unaAlert.show('info', 'Information', 'Here is some important information for you.');
+
+// Show a warning alert
+unaAlert.show('warning', 'Warning', 'Please be careful with this action.');
+
+// Show an error alert
+unaAlert.show('error', 'Error', 'Something went wrong. Please try again.');</pre
+        >
+      </section>
+
+      <section class="section">
+        <h2>Confirmation Dialogs</h2>
+        <p> Confirmation dialogs ask the user to confirm an action and execute a callback function when confirmed. </p>
+
+        <div class="demo-grid">
+          <button class="button" onclick="showBasicConfirm()"> Basic Confirm </button>
+          <button class="button" onclick="showCustomButtonsConfirm()"> Custom Button Text </button>
+          <button class="button" onclick="showVerticalButtonsConfirm()"> Vertical Buttons </button>
+        </div>
+
+        <h3 style="margin-top: 24px; font-size: 1.25rem">Code Example:</h3>
+        <pre class="code-block">
+            // Basic confirmation dialog
+            unaAlert.confirm(
+                'Confirm Action', 
+                'Are you sure you want to proceed with this action?',
+                function() {
+                    // This function will be called when the user clicks Confirm
+                    console.log('User confirmed the action');
+                    unaAlert.toast('success', 'Confirmed', 'Your action has been confirmed');
+                }
+            );
+
+            // Confirmation with custom button text
+            unaAlert.confirm(
+                'Delete Item', 
+                'Are you sure you want to delete this item? This action cannot be undone.',
+                function() {
+                    console.log('User confirmed deletion');
+                    unaAlert.toast('success', 'Deleted', 'Item has been deleted');
+                },
+                {
+                    confirmText: 'Delete',
+                    cancelText: 'Keep'
+                }
+            );
+
+            // Confirmation with vertical buttons
+            unaAlert.confirm(
+                'Subscribe to Newsletter', 
+                'Would you like to subscribe to our weekly newsletter?',
+                function() {
+                    console.log('User subscribed');
+                    unaAlert.toast('success', 'Subscribed', 'Thank you for subscribing!');
+                },
+                {
+                    confirmText: 'Subscribe',
+                    cancelText: 'No, thanks',
+                    verticalButtons: true
+                }
+            );
+        </pre>
+      </section>
+
+      <section class="section">
+        <h2>Toast Notifications</h2>
+        <p>
+          Toast notifications are small, non-blocking messages that appear at the bottom of the screen and automatically
+          disappear after a few seconds.
+        </p>
+
+        <div class="demo-grid">
+          <button
+            class="button button-success"
+            onclick="unaAlert.toast('success', 'Success', 'Operation completed successfully')">
+            Success Toast
+          </button>
+          <button class="button" onclick="unaAlert.toast('info', 'Information', 'Here is some useful information')">
+            Info Toast
+          </button>
+          <button
+            class="button button-warning"
+            onclick="unaAlert.toast('warning', 'Warning', 'Please be careful with this action')">
+            Warning Toast
+          </button>
+          <button class="button button-error" onclick="unaAlert.toast('error', 'Error', 'Something went wrong')">
+            Error Toast
+          </button>
+          <button class="button button-secondary" onclick="showCustomDurationToast()"> Custom Duration </button>
+        </div>
+
+        <h3 style="margin-top: 24px; font-size: 1.25rem">Code Example:</h3>
+        <pre class="code-block">
+// Show a success toast
+unaAlert.toast('success', 'Success', 'Operation completed successfully');
+
+// Show an info toast
+unaAlert.toast('info', 'Information', 'Here is some useful information');
+
+// Show a warning toast
+unaAlert.toast('warning', 'Warning', 'Please be careful with this action');
+
+// Show an error toast
+unaAlert.toast('error', 'Error', 'Something went wrong');
+
+// Show a toast with custom duration (8 seconds)
+unaAlert.toast('info', 'Custom Duration', 'This toast will stay for 8 seconds', 8000);</pre
+        >
+      </section>
+
+      <section class="section">
+        <h2>Advanced Usage</h2>
+        <p> Una Allert provides additional features for more advanced use cases: </p>
+
+        <h3 style="margin-top: 16px; font-size: 1.25rem"> Programmatically Close Alerts </h3>
+        <pre class="code-block">
+// Close the current alert dialog
+unaAlert.close();</pre
+        >
+
+        <h3 style="margin-top: 16px; font-size: 1.25rem"> Close Toasts Programmatically </h3>
+        <pre class="code-block">
+// Create a toast and get a reference to it
+const myToast = unaAlert.toast('info', 'Downloading', 'Your file is downloading...');
+
+// Later, you can close it programmatically
+myToast.close();</pre
+        >
+
+        <div style="margin-top: 24px">
+          <button class="button" onclick="showProgrammaticCloseDemo()"> Demo Programmatic Close </button>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      <p>Una Allert v1.0.0 | Created by Aqil Ramadhan | MIT License</p>
+    </footer>
+
+    <script src="../../src/una-allert.js"></script>
+    <script>
+      // Initialize the library
+      document.addEventListener("DOMContentLoaded", function () {
+        unaAlert.init();
+      });
+
+      // Confirm demo functions
+      function showBasicConfirm() {
+        unaAlert.confirm("Confirm Action", "Are you sure you want to proceed with this action?", function () {
+          console.log("User confirmed the action");
+          unaAlert.toast("success", "Confirmed", "Your action has been confirmed");
+        });
+      }
+
+      function showCustomButtonsConfirm() {
+        unaAlert.confirm(
+          "Delete Item",
+          "Are you sure you want to delete this item? This action cannot be undone.",
+          function () {
+            console.log("User confirmed deletion");
+            unaAlert.toast("success", "Deleted", "Item has been deleted");
+          },
+          {
+            confirmText: "Delete",
+            cancelText: "Keep",
+          }
+        );
+      }
+
+      function showVerticalButtonsConfirm() {
+        unaAlert.confirm(
+          "Subscribe to Newsletter",
+          "Would you like to subscribe to our weekly newsletter?",
+          function () {
+            console.log("User subscribed");
+            unaAlert.toast("success", "Subscribed", "Thank you for subscribing!");
+          },
+          {
+            confirmText: "Subscribe",
+            cancelText: "No, thanks",
+            verticalButtons: true,
+          }
+        );
+      }
+
+      // Toast demo functions
+      function showCustomDurationToast() {
+        unaAlert.toast("info", "Custom Duration", "This toast will stay for 8 seconds", 8000);
+      }
+
+      // Advanced demo functions
+      function showProgrammaticCloseDemo() {
+        const downloadToast = unaAlert.toast("info", "Downloading", "Your file is downloading...", 60000);
+
+        setTimeout(function () {
+          downloadToast.close();
+          unaAlert.toast("success", "Download Complete", "Your file has been downloaded successfully");
+        }, 3000);
+      }
+    </script>
+  </body>
+</html>

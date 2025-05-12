@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo Una Allert - Sistem Alert & Toast Modern</title>
+    <link rel="stylesheet" href="../../src/una-allert.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      }
+
+      body {
+        background-color: #f9fafb;
+        color: #1f2937;
+        line-height: 1.5;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 40px 20px;
+      }
+
+      header {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 16px;
+        color: #4f46e5;
+      }
+
+      .subtitle {
+        font-size: 1.25rem;
+        color: #6b7280;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .section {
+        background-color: white;
+        border-radius: 12px;
+        padding: 32px;
+        margin-bottom: 32px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      }
+
+      h2 {
+        font-size: 1.5rem;
+        margin-bottom: 16px;
+        color: #111827;
+        padding-bottom: 12px;
+        border-bottom: 1px solid #e5e7eb;
+      }
+
+      p {
+        margin-bottom: 16px;
+        color: #4b5563;
+      }
+
+      .code-block {
+        background-color: #f3f4f6;
+        border-radius: 8px;
+        padding: 16px;
+        margin-bottom: 24px;
+        overflow-x: auto;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          "Liberation Mono", "Courier New", monospace;
+        font-size: 0.9rem;
+        color: #1f2937;
+      }
+
+      .demo-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 16px;
+        margin-top: 24px;
+      }
+
+      .button {
+        background-color: #6366f1;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 12px 20px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+      }
+
+      .button:hover {
+        background-color: #4f46e5;
+      }
+
+      .button-secondary {
+        background-color: #f3f4f6;
+        color: #374151;
+      }
+
+      .button-secondary:hover {
+        background-color: #e5e7eb;
+      }
+
+      .button-success {
+        background-color: #10b981;
+      }
+
+      .button-success:hover {
+        background-color: #059669;
+      }
+
+      .button-warning {
+        background-color: #f59e0b;
+      }
+
+      .button-warning:hover {
+        background-color: #d97706;
+      }
+
+      .button-error {
+        background-color: #ef4444;
+      }
+
+      .button-error:hover {
+        background-color: #dc2626;
+      }
+
+      footer {
+        text-align: center;
+        padding: 32px 0;
+        color: #6b7280;
+        font-size: 0.875rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Demo Una Allert</h1>
+        <p class="subtitle">
+          Library notifikasi alert dan toast yang ringan dan dapat disesuaikan
+        </p>
+      </header>
+
+      <section class="section">
+        <h2>Pengenalan</h2>
+        <p>
+          Una Allert adalah library JavaScript modern dan ringan yang
+          menyediakan dialog alert dan notifikasi toast yang indah untuk
+          aplikasi web Anda. Library ini sangat dapat disesuaikan, mudah
+          digunakan, dan tidak memiliki dependensi.
+        </p>
+        <p>
+          Halaman demo ini menunjukkan semua fitur Una Allert dan mencakup
+          contoh kode untuk membantu Anda memulai dengan cepat.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>Instalasi</h2>
+        <p>
+          Untuk menggunakan Una Allert, sertakan file CSS dan JavaScript dalam
+          HTML Anda:
+        </p>
+        <pre class="code-block">
+&lt;link rel="stylesheet" href="Una Allert.css"&gt;
+&lt;script src="Una Allert.js"&gt;&lt;/script&gt;</pre
+        >
+        <p>Lalu inisialisasi library setelah DOM dimuat:</p>
+        <pre class="code-block">
+&lt;script&gt;
+  document.addEventListener('DOMContentLoaded', function() {
+    unaAlert.init();
+  });
+&lt;/script&gt;</pre
+        >
+      </section>
+
+      <section class="section">
+        <h2>Alert Dasar</h2>
+        <p>
+          Una Allert menyediakan berbagai jenis alert: sukses, info, peringatan,
+          galat, dan pertanyaan.
+        </p>
+
+        <div class="demo-grid">
+          <button
+            class="button button-success"
+            onclick="unaAlert.show('success', 'Sukses!', 'Tindakan Anda berhasil dilakukan.')">
+            Alert Sukses
+          </button>
+          <button
+            class="button"
+            onclick="unaAlert.show('info', 'Informasi', 'Berikut adalah informasi penting untuk Anda.')">
+            Alert Info
+          </button>
+          <button
+            class="button button-warning"
+            onclick="unaAlert.show('warning', 'Peringatan', 'Harap berhati-hati dengan tindakan ini.')">
+            Alert Peringatan
+          </button>
+          <button
+            class="button button-error"
+            onclick="unaAlert.show('error', 'Galat', 'Terjadi kesalahan. Silakan coba lagi.')">
+            Alert Galat
+          </button>
+        </div>
+
+        <h3 style="margin-top: 24px; font-size: 1.25rem">Contoh Kode:</h3>
+        <pre class="code-block">
+// Tampilkan alert sukses
+unaAlert.show('success', 'Sukses!', 'Tindakan Anda berhasil dilakukan.');
+
+// Tampilkan alert info
+unaAlert.show('info', 'Informasi', 'Berikut adalah informasi penting untuk Anda.');
+
+// Tampilkan alert peringatan
+unaAlert.show('warning', 'Peringatan', 'Harap berhati-hati dengan tindakan ini.');
+
+// Tampilkan alert galat
+unaAlert.show('error', 'Galat', 'Terjadi kesalahan. Silakan coba lagi.');</pre
+        >
+      </section>
+
+      <section class="section">
+        <h2>Dialog Konfirmasi</h2>
+        <p>
+          Dialog konfirmasi meminta pengguna untuk mengonfirmasi tindakan dan
+          mengeksekusi fungsi callback saat dikonfirmasi.
+        </p>
+
+        <div class="demo-grid">
+          <button class="button" onclick="showBasicConfirm()">
+            Konfirmasi Dasar
+          </button>
+          <button class="button" onclick="showCustomButtonsConfirm()">
+            Teks Tombol Kustom
+          </button>
+          <button class="button" onclick="showVerticalButtonsConfirm()">
+            Tombol Vertikal
+          </button>
+        </div>
+
+        <h3 style="margin-top: 24px; font-size: 1.25rem">Contoh Kode:</h3>
+        <pre class="code-block">
+// Dialog konfirmasi dasar
+unaAlert.confirm(
+    'Konfirmasi Tindakan', 
+    'Apakah Anda yakin ingin melanjutkan tindakan ini?',
+    function() {
+        console.log('Pengguna mengonfirmasi tindakan');
+        unaAlert.toast('success', 'Dikonfirmasi', 'Tindakan Anda telah dikonfirmasi');
+    }
+);
+
+// Konfirmasi dengan teks tombol kustom
+unaAlert.confirm(
+    'Hapus Item', 
+    'Apakah Anda yakin ingin menghapus item ini? Tindakan ini tidak dapat dibatalkan.',
+    function() {
+        console.log('Pengguna mengonfirmasi penghapusan');
+        unaAlert.toast('success', 'Dihapus', 'Item telah dihapus');
+    },
+    {
+        confirmText: 'Hapus',
+        cancelText: 'Simpan'
+    }
+);
+
+// Konfirmasi dengan tombol vertikal
+unaAlert.confirm(
+    'Langganan Newsletter', 
+    'Apakah Anda ingin berlangganan buletin mingguan kami?',
+    function() {
+        console.log('Pengguna berlangganan');
+        unaAlert.toast('success', 'Berlangganan', 'Terima kasih telah berlangganan!');
+    },
+    {
+        confirmText: 'Langganan',
+        cancelText: 'Tidak, terima kasih',
+        verticalButtons: true
+    }
+);</pre
+        >
+      </section>
+
+      <section class="section">
+        <h2>Notifikasi Toast</h2>
+        <p>
+          Notifikasi toast adalah pesan kecil yang tidak mengganggu, muncul di
+          bagian bawah layar dan akan hilang secara otomatis setelah beberapa
+          detik.
+        </p>
+
+        <div class="demo-grid">
+          <button
+            class="button button-success"
+            onclick="unaAlert.toast('success', 'Sukses', 'Operasi berhasil diselesaikan')">
+            Toast Sukses
+          </button>
+          <button
+            class="button"
+            onclick="unaAlert.toast('info', 'Informasi', 'Berikut informasi yang bermanfaat')">
+            Toast Info
+          </button>
+          <button
+            class="button button-warning"
+            onclick="unaAlert.toast('warning', 'Peringatan', 'Harap berhati-hati dengan tindakan ini')">
+            Toast Peringatan
+          </button>
+          <button
+            class="button button-error"
+            onclick="unaAlert.toast('error', 'Galat', 'Terjadi kesalahan')">
+            Toast Galat
+          </button>
+          <button
+            class="button button-secondary"
+            onclick="showCustomDurationToast()">
+            Durasi Kustom
+          </button>
+        </div>
+
+        <h3 style="margin-top: 24px; font-size: 1.25rem">Contoh Kode:</h3>
+        <pre class="code-block">
+// Tampilkan toast sukses
+unaAlert.toast('success', 'Sukses', 'Operasi berhasil diselesaikan');
+
+// Tampilkan toast info
+unaAlert.toast('info', 'Informasi', 'Berikut informasi yang bermanfaat');
+
+// Tampilkan toast peringatan
+unaAlert.toast('warning', 'Peringatan', 'Harap berhati-hati dengan tindakan ini');
+
+// Tampilkan toast galat
+unaAlert.toast('error', 'Galat', 'Terjadi kesalahan');
+
+// Tampilkan toast dengan durasi kustom (8 detik)
+unaAlert.toast('info', 'Durasi Kustom', 'Toast ini akan bertahan selama 8 detik', 8000);</pre
+        >
+      </section>
+
+      <section class="section">
+        <h2>Penggunaan Lanjutan</h2>
+        <p>
+          Una Allert menyediakan fitur tambahan untuk kasus penggunaan yang
+          lebih kompleks:
+        </p>
+
+        <h3 style="margin-top: 16px; font-size: 1.25rem">
+          Menutup Alert Secara Programatik
+        </h3>
+        <pre class="code-block">
+// Tutup dialog alert saat ini
+unaAlert.close();</pre
+        >
+
+        <h3 style="margin-top: 16px; font-size: 1.25rem">
+          Tutup Toast Secara Programatik
+        </h3>
+        <pre class="code-block">
+// Buat toast dan simpan referensinya
+const myToast = unaAlert.toast('info', 'Mengunduh', 'File Anda sedang diunduh...');
+
+// Kemudian, Anda bisa menutupnya secara manual
+myToast.close();</pre
+        >
+
+        <div style="margin-top: 24px">
+          <button class="button" onclick="showProgrammaticCloseDemo()">
+            Demo Tutup Secara Programatik
+          </button>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      <p>Una Allert v1.0.0 | Dibuat oleh Aqil Ramadhan | Lisensi MIT</p>
+    </footer>
+
+    <script src="../../src/una-allert.js"></script>
+    <script>
+      // Inisialisasi library
+      document.addEventListener("DOMContentLoaded", function () {
+        unaAlert.init();
+      });
+
+      // Fungsi demo konfirmasi
+      function showBasicConfirm() {
+        unaAlert.confirm(
+          "Konfirmasi Tindakan",
+          "Apakah Anda yakin ingin melanjutkan tindakan ini?",
+          function () {
+            console.log("Pengguna mengonfirmasi tindakan");
+            unaAlert.toast(
+              "success",
+              "Dikonfirmasi",
+              "Tindakan Anda telah dikonfirmasi"
+            );
+          }
+        );
+      }
+
+      function showCustomButtonsConfirm() {
+        unaAlert.confirm(
+          "Hapus Item",
+          "Apakah Anda yakin ingin menghapus item ini? Tindakan ini tidak dapat dibatalkan.",
+          function () {
+            console.log("Pengguna mengonfirmasi penghapusan");
+            unaAlert.toast("success", "Dihapus", "Item telah dihapus");
+          },
+          {
+            confirmText: "Hapus",
+            cancelText: "Simpan",
+          }
+        );
+      }
+
+      function showVerticalButtonsConfirm() {
+        unaAlert.confirm(
+          "Langganan Newsletter",
+          "Apakah Anda ingin berlangganan buletin mingguan kami?",
+          function () {
+            console.log("Pengguna berlangganan");
+            unaAlert.toast(
+              "success",
+              "Berlangganan",
+              "Terima kasih telah berlangganan!"
+            );
+          },
+          {
+            confirmText: "Langganan",
+            cancelText: "Tidak, terima kasih",
+            verticalButtons: true,
+          }
+        );
+      }
+
+      // Fungsi demo toast
+      function showCustomDurationToast() {
+        unaAlert.toast(
+          "info",
+          "Durasi Kustom",
+          "Toast ini akan bertahan selama 8 detik",
+          8000
+        );
+      }
+
+      // Fungsi lanjutan
+      function showProgrammaticCloseDemo() {
+        const downloadToast = unaAlert.toast(
+          "info",
+          "Mengunduh",
+          "File Anda sedang diunduh...",
+          60000
+        );
+
+        setTimeout(function () {
+          downloadToast.close();
+          unaAlert.toast(
+            "success",
+            "Unduhan Selesai",
+            "File Anda telah berhasil diunduh"
+          );
+        }, 3000);
+      }
+    </script>
+  </body>
+</html>
